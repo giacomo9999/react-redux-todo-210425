@@ -1,5 +1,5 @@
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { addTask } from "./actions";
+import { addTask, deleteTask } from "./actions";
 
 const App = () => {
   const tasks = useSelector((state) => state.tasks, shallowEqual);
@@ -13,6 +13,7 @@ const App = () => {
 
   const removeTask = (index) => {
     console.log("Deleting...", index);
+    dispatch(deleteTask(index));
   };
 
   return (
@@ -23,7 +24,7 @@ const App = () => {
           {tasks.map((task, index) => (
             <li key={index}>
               <p>{task}</p>
-              <button onClick={() => removeTask(index)}>Delete</button>
+              <button onClick={() => removeTask(task)}>Delete</button>
             </li>
           ))}
         </ul>
