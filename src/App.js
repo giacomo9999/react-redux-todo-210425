@@ -1,36 +1,39 @@
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { addTask, deleteTask } from "./actions";
+import { addFruit, deleteFruit } from "./actions";
+
+import InputForm from "./components/InputForm";
 
 const App = () => {
-  const tasks = useSelector((state) => state.tasks, shallowEqual);
+  const Fruits = useSelector((state) => state.fruits, shallowEqual);
   const dispatch = useDispatch();
 
-  const handleAddTask = () => {
-    const task = document.querySelector(".task").value;
-    console.log("handleAddTask here..", task);
-    dispatch(addTask(task));
+  const handleAddFruit = () => {
+    // const Fruit = document.querySelector(".Fruit").value;
+    console.log("handleAddFruit here..");
+    // dispatch(addFruit(Fruit));
   };
 
-  const removeTask = (index) => {
+  const removeFruit = (index) => {
     console.log("Deleting...", index);
-    dispatch(deleteTask(index));
+    dispatch(deleteFruit(index));
   };
 
   return (
     <div className="container-outer">
-      <h2>List Of Tasks</h2>
-      <div className="tasks">
+      <h2>List Of Fruits</h2>
+      <div className="Fruits">
         <ul>
-          {tasks.map((task, index) => (
+          {Fruits.map((fruit, index) => (
             <li key={index}>
-              <p>{task}</p>
-              <button onClick={() => removeTask(task)}>Delete</button>
+              <p>{fruit}</p>
+              <button onClick={() => removeFruit(fruit)}>Delete</button>
             </li>
           ))}
         </ul>
       </div>
-      <input type="text" className="task" />
-      <button onClick={handleAddTask}>Add Task</button>
+      {/* <input type="text" className="Fruit" />
+      <button onClick={handleAddFruit}>Add Fruit</button> */}
+      <InputForm addFruit={handleAddFruit} />
     </div>
   );
 };

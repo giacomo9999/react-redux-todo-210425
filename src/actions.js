@@ -1,13 +1,13 @@
-import { ADD_TASK, DELETE_TASK } from "./types";
+import { ADD_FRUIT, DELETE_FRUIT } from "./types";
 
 // defining action creators
 
-export const addTask = (task) => ({
-  type: ADD_TASK,
+export const addFruit = (task) => ({
+  type: ADD_FRUIT,
   task,
 });
 
-export const deleteTask = (task) => ({
-  type: DELETE_TASK,
+export const deleteFruit = (task) => ({
+  type: DELETE_FRUIT,
   task,
 });

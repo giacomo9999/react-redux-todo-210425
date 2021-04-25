@@ -1,21 +1,21 @@
-import { ADD_TASK, DELETE_TASK } from "../types";
+import { ADD_FRUIT, DELETE_FRUIT } from "../types";
 
-const initialState = { tasks: [] };
+const initialState = { fruits: [] };
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TASK:
-      console.log("Reducer adding task...");
+    case ADD_FRUIT:
+      console.log("Reducer adding fruit...");
       return {
         ...state,
-        tasks: state.tasks.concat(action.task),
+        fruits: state.fruits.concat(action.fruit),
       };
-    case DELETE_TASK:
-      console.log("Reducer deleting task...", action.task);
-      const filteredTasks = state.tasks.filter((task) => {
-        return task !== action.task;
+    case DELETE_FRUIT:
+      console.log("Reducer deleting fruit...", action.fruit);
+      const filteredFruits = state.fruits.filter((fruit) => {
+        return fruit !== action.fruit;
       });
-      return { tasks: filteredTasks };
+      return { fruits: filteredFruits };
     default:
       return state;
   }

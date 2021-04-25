@@ -1,2 +1,2 @@
-export const ADD_TASK = "ADD_TASK";
-export const DELETE_TASK = "DELETE_TASK";
+export const ADD_FRUIT = "ADD_FRUIT";
+export const DELETE_FRUIT = "DELETE_FRUIT";
