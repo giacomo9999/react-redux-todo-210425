@@ -3,7 +3,6 @@ import { addTask } from "./actions";
 
 const App = () => {
   const tasks = useSelector((state) => state.tasks, shallowEqual);
-  console.log("Tasks: ", tasks.tasks);
   const dispatch = useDispatch();
 
   const handleAddTask = () => {
@@ -12,13 +11,22 @@ const App = () => {
     dispatch(addTask(task));
   };
 
+  const removeTask = (index) => {
+    console.log("Deleting...", index);
+  };
+
   return (
     <div className="container-outer">
       <h2>List Of Tasks</h2>
       <div className="tasks">
-        {tasks.map((task, index) => (
-          <p key={index}>{task}</p>
-        ))}
+        <ul>
+          {tasks.map((task, index) => (
+            <li key={index}>
+              <p>{task}</p>
+              <button onClick={() => removeTask(index)}>Delete</button>
+            </li>
+          ))}
+        </ul>
       </div>
       <input type="text" className="task" />
       <button onClick={handleAddTask}>Add Task</button>
