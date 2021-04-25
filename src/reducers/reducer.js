@@ -13,11 +13,10 @@ const appReducer = (state = initialState, action) => {
       };
     case DELETE_FRUIT:
       const filteredFruits = state.fruits.filter((fruit) => {
-        return fruit !== action.fruit;
+        return fruit.fruitId !== action.fruitId;
       });
       return { fruits: filteredFruits };
     case UPDATE_FRUIT:
-      console.log("Reducer here, updating fruit...", action.fruit);
       const updatedFruits = state.fruits.map((fruit) => {
         if (fruit.fruitId === action.fruit.fruitId) return action.fruit;
         return fruit;

@@ -7,9 +7,9 @@ export const addFruit = (fruit) => ({
   fruit,
 });
 
-export const deleteFruit = (fruit) => ({
+export const deleteFruit = (fruitId) => ({
   type: DELETE_FRUIT,
-  fruit,
+  fruitId,
 });
 
 export const updateFruit = (fruit) => ({

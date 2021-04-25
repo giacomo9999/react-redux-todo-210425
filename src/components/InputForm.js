@@ -16,11 +16,9 @@ const InputForm = (props) => {
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
-    console.log(formState);
   };
 
   const submitForm = () => {
-    console.log("Submitting...", formState);
     let adjFruitId = props.editData
       ? props.editData.fruitId
       : props.currentFruitId;

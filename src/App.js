@@ -13,19 +13,16 @@ const App = () => {
   const [currentFruitId, setCurrentFruitId] = useState(1);
 
   const handleAddFruit = (fruit) => {
-    console.log("handleAddFruit here..", fruit);
     dispatch(addFruit(fruit));
     toggleInputForm();
     setCurrentFruitId(currentFruitId + 1);
   };
 
   const handleRemoveFruit = (index) => {
-    console.log("Deleting...", index);
     dispatch(deleteFruit(index));
   };
 
   const handleEditFruit = (fruit) => {
-    console.log("handleEditFruit here..", fruit);
     setEditData({
       fruitId: fruit.fruitId,
       fruitName: fruit.fruitName,
@@ -36,7 +33,6 @@ const App = () => {
   };
 
   const handleUpdateFruit = (fruit) => {
-    console.log("handleUpdateFruit here..", fruit);
     dispatch(updateFruit(fruit));
     setAddOrEdit("add");
     toggleInputForm();
@@ -50,7 +46,6 @@ const App = () => {
     let inputPanel = <button onClick={toggleInputForm}>Add A Fruit</button>;
 
     if (inputFormOpen && addOrEdit === "edit") {
-      console.log("Configuring 'Edit' Panel...");
       inputPanel = (
         <InputForm
           addOrEdit={"edit"}
@@ -62,7 +57,6 @@ const App = () => {
     }
 
     if (inputFormOpen && addOrEdit === "add") {
-      console.log("Configuring 'Add' Panel...");
       inputPanel = (
         <InputForm
           addOrEdit={"add"}
@@ -87,7 +81,9 @@ const App = () => {
               <p>ID: {fruit.fruitId}</p>
               <p>Color: {fruit.fruitColor}</p>
 
-              <button onClick={() => handleRemoveFruit(fruit)}>Delete</button>
+              <button onClick={() => handleRemoveFruit(fruit.fruitId)}>
+                Delete
+              </button>
               <button onClick={() => handleEditFruit(fruit)}>Edit</button>
             </li>
           ))}
