@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { addTask } from "./actions";
 
-function App({ appState, addNewTask }) {
+const App = ({ appState, addNewTask }) => {
   const handleAddTask = () => {
     const task = document.querySelector(".task").value;
     console.log("handleAddTask here..", task);
@@ -20,7 +20,7 @@ function App({ appState, addNewTask }) {
       <button onClick={handleAddTask}>Add Task</button>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => ({ appState: state });
 
