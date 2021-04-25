@@ -1,9 +1,30 @@
-function App() {
+import { connect } from "react-redux";
+import { addTask } from "./actions";
+
+function App({ appState, addNewTask }) {
+  const handleAddTask = () => {
+    const task = document.querySelector(".task").value;
+    addNewTask(task);
+  };
+
   return (
     <div className="container-outer">
-      <h1>APP</h1>
+      <h2>List Of Tasks</h2>
+      <div className="tasks">
+        {appState.tasks.map((task, index) => (
+          <p key={index}>{task}</p>
+        ))}
+      </div>
+      <input type="text" className="task" />
+      <button onClick={handleAddTask}>Add Task</button>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({ appState: state });
+
+const mapDispatchToProps = (dispatch) => ({
+  addNewTask: (task) => dispatch(addTask(task)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
