@@ -1,7 +1,7 @@
 import { ADD_FRUIT, DELETE_FRUIT } from "../types";
 
 const initialState = {
-  fruits: [{ fruitName: "Orange", fruitColor: "chartreuse" }],
+  fruits: [{ fruitId: 0, fruitName: "Orange", fruitColor: "chartreuse" }],
 };
 
 const appReducer = (state = initialState, action) => {

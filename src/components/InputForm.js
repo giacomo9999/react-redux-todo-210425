@@ -13,7 +13,7 @@ const InputForm = (props) => {
 
   const submitForm = () => {
     console.log("Submitting...", formState);
-    props.addFruit(formState);
+    props.addFruit({ ...formState, fruitId: props.currentFruitId });
     setFormState({
       fruitName: "",
       fruitColor: "",
