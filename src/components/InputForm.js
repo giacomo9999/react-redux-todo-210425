@@ -58,7 +58,6 @@ const InputForm = (props) => {
       </form>
       <button onClick={submitForm}>Submit</button>
       <button onClick={props.toggleInputForm}>Cancel</button>
-      {/* <button onClick={this.props.cancel}>Cancel</button> */}
     </div>
   );
 };
