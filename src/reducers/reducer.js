@@ -1,4 +1,4 @@
-const initialState = { tasks: ["I Am A Task"] };
+const initialState = { tasks: [] };
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
