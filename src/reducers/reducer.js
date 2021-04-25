@@ -1,4 +1,4 @@
-import { ADD_FRUIT, DELETE_FRUIT } from "../types";
+import { ADD_FRUIT, DELETE_FRUIT, UPDATE_FRUIT } from "../types";
 
 const initialState = {
   fruits: [{ fruitId: 0, fruitName: "Orange", fruitColor: "chartreuse" }],
@@ -16,6 +16,13 @@ const appReducer = (state = initialState, action) => {
         return fruit !== action.fruit;
       });
       return { fruits: filteredFruits };
+    case UPDATE_FRUIT:
+      console.log("Reducer here, updating fruit...", action.fruit);
+      const updatedFruits = state.fruits.map((fruit) => {
+        if (fruit.fruitId === action.fruit.fruitId) return action.fruit;
+        return fruit;
+      });
+      return { fruits: updatedFruits };
     default:
       return state;
   }

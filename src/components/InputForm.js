@@ -1,10 +1,18 @@
 import { useState } from "react";
 
 const InputForm = (props) => {
-  const [formState, setFormState] = useState({
-    fruitName: "",
-    fruitColor: "",
-  });
+  const [formState, setFormState] = useState(
+    props.editData
+      ? {
+          fruitId: props.editData.fruitId,
+          fruitName: props.editData.fruitName,
+          fruitColor: props.editData.fruitColor,
+        }
+      : {
+          fruitName: "",
+          fruitColor: "",
+        }
+  );
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -13,7 +21,13 @@ const InputForm = (props) => {
 
   const submitForm = () => {
     console.log("Submitting...", formState);
-    props.addFruit({ ...formState, fruitId: props.currentFruitId });
+    let adjFruitId = props.editData
+      ? props.editData.fruitId
+      : props.currentFruitId;
+    const adjFruit = { ...formState, fruitId: adjFruitId };
+    if (props.addOrEdit === "add") props.addFruit(adjFruit);
+    if (props.addOrEdit === "edit") props.updateFruit(adjFruit);
+
     setFormState({
       fruitName: "",
       fruitColor: "",
@@ -45,6 +59,7 @@ const InputForm = (props) => {
         </label>
       </form>
       <button onClick={submitForm}>Submit</button>
+      <button onClick={props.toggleInputForm}>Cancel</button>
       {/* <button onClick={this.props.cancel}>Cancel</button> */}
     </div>
   );
