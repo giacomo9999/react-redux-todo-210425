@@ -1,18 +1,22 @@
-import { connect } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { addTask } from "./actions";
 
-const App = ({ appState, addNewTask }) => {
+const App = () => {
+  const tasks = useSelector((state) => state.tasks, shallowEqual);
+  console.log("Tasks: ", tasks.tasks);
+  const dispatch = useDispatch();
+
   const handleAddTask = () => {
     const task = document.querySelector(".task").value;
     console.log("handleAddTask here..", task);
-    addNewTask(task);
+    dispatch(addTask(task));
   };
 
   return (
     <div className="container-outer">
       <h2>List Of Tasks</h2>
       <div className="tasks">
-        {appState.tasks.map((task, index) => (
+        {tasks.map((task, index) => (
           <p key={index}>{task}</p>
         ))}
       </div>
@@ -22,13 +26,4 @@ const App = ({ appState, addNewTask }) => {
   );
 };
 
-const mapStateToProps = (state) => ({ appState: state });
-
-const mapDispatchToProps = (dispatch) => ({
-  addNewTask: (task) => {
-    console.log("dispatching task...", task);
-    dispatch(addTask(task));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
