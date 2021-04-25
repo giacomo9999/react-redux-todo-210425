@@ -1,7 +1,16 @@
 const initialState = { tasks: ["I Am A Task"] };
 
 const appReducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case "ADD_TASK":
+      console.log("Reducer adding task...");
+      return {
+        ...state,
+        tasks: state.tasks.concat(action.task),
+      };
+    default:
+      return state;
+  }
 };
 
 export default appReducer;

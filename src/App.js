@@ -4,6 +4,7 @@ import { addTask } from "./actions";
 function App({ appState, addNewTask }) {
   const handleAddTask = () => {
     const task = document.querySelector(".task").value;
+    console.log("handleAddTask here..", task);
     addNewTask(task);
   };
 
@@ -24,7 +25,10 @@ function App({ appState, addNewTask }) {
 const mapStateToProps = (state) => ({ appState: state });
 
 const mapDispatchToProps = (dispatch) => ({
-  addNewTask: (task) => dispatch(addTask(task)),
+  addNewTask: (task) => {
+    console.log("dispatching task...", task);
+    dispatch(addTask(task));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
