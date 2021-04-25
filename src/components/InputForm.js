@@ -1,12 +1,23 @@
 import { useState } from "react";
 
 const InputForm = (props) => {
-  const [formState, setFormState] = useState({});
+  const [formState, setFormState] = useState({
+    fruitName: "",
+    fruitColor: "",
+  });
 
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+    console.log(formState);
+  };
 
   const submitForm = () => {
-    console.log("Submitting...");
+    console.log("Submitting...", formState);
+    props.addFruit(formState);
+    setFormState({
+      fruitName: "",
+      fruitColor: "",
+    });
   };
 
   return (
@@ -17,8 +28,8 @@ const InputForm = (props) => {
           <input
             className="h-input"
             type="text"
-            name="name"
-            value={formState.name}
+            name="fruitName"
+            value={formState.fruitName}
             onChange={handleChange}
           />
         </label>
@@ -27,8 +38,8 @@ const InputForm = (props) => {
           <input
             className="h-input"
             type="text"
-            name="color"
-            value={formState.color}
+            name="fruitColor"
+            value={formState.fruitColor}
             onChange={handleChange}
           />
         </label>

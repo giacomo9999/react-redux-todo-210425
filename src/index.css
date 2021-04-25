@@ -103,10 +103,11 @@ ul {
 
 li {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   font-size: 1.2em;
   font-weight: 600;
-  text-align: center;
+  /* text-align: left; */
   /* color 0 */
   background-color: #1c2a39;
   margin: 5px;

@@ -7,10 +7,9 @@ const App = () => {
   const Fruits = useSelector((state) => state.fruits, shallowEqual);
   const dispatch = useDispatch();
 
-  const handleAddFruit = () => {
-    // const Fruit = document.querySelector(".Fruit").value;
-    console.log("handleAddFruit here..");
-    // dispatch(addFruit(Fruit));
+  const handleAddFruit = (fruit) => {
+    console.log("handleAddFruit here..", fruit);
+    dispatch(addFruit(fruit));
   };
 
   const removeFruit = (index) => {
@@ -25,7 +24,9 @@ const App = () => {
         <ul>
           {Fruits.map((fruit, index) => (
             <li key={index}>
-              <p>{fruit}</p>
+              <h2>{fruit.fruitName}</h2>
+              <p>Color: {fruit.fruitColor}</p>
+
               <button onClick={() => removeFruit(fruit)}>Delete</button>
             </li>
           ))}
